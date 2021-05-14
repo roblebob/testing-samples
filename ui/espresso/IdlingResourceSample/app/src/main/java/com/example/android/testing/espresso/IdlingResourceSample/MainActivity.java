@@ -44,15 +44,15 @@ public class MainActivity extends Activity implements View.OnClickListener,
     @Nullable private SimpleIdlingResource mIdlingResource;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void onCreate( Bundle savedInstanceState) {
+        super.onCreate( savedInstanceState);
+        setContentView( R.layout.activity_main);
 
         // Set the listeners for the buttons.
-        findViewById(R.id.changeTextBt).setOnClickListener(this);
+        findViewById( R.id.changeTextBt) .setOnClickListener(this);
 
-        mTextView = (TextView) findViewById(R.id.textToBeChanged);
-        mEditText = (EditText) findViewById(R.id.editTextUserInput);
+        mTextView = (TextView) findViewById( R.id.textToBeChanged);
+        mEditText = (EditText) findViewById( R.id.editTextUserInput);
     }
 
     @Override
@@ -64,14 +64,14 @@ public class MainActivity extends Activity implements View.OnClickListener,
             // Set a temporary text.
             mTextView.setText(R.string.waiting_msg);
             // Submit the message to the delayer.
-            MessageDelayer.processMessage(text, this, mIdlingResource);
+            MessageDelayer .processMessage( text, this, mIdlingResource);
         }
     }
 
     @Override
     public void onDone(String text) {
         // The delayer notifies the activity via a callback.
-        mTextView.setText(text);
+        mTextView .setText( text);
     }
 
     /**
