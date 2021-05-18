@@ -55,26 +55,25 @@ public class ChangeTextBehaviorTest {
      */
     @Before
     public void registerIdlingResource() {
-        ActivityScenario activityScenario = ActivityScenario.launch(MainActivity.class);
-        activityScenario.onActivity(new ActivityScenario.ActivityAction<MainActivity>() {
-            @Override
-            public void perform(MainActivity activity) {
-                mIdlingResource = activity.getIdlingResource();
-                // To prove that the test fails, omit this call:
-                IdlingRegistry.getInstance().register(mIdlingResource);
-            }
+
+        ActivityScenario activityScenario = ActivityScenario .launch( MainActivity.class);
+
+        activityScenario .onActivity(  (ActivityScenario .ActivityAction< MainActivity>) activity -> {
+
+            mIdlingResource = activity .getIdlingResource();
+            // To prove that the test fails, omit this call:
+            IdlingRegistry .getInstance() .register( mIdlingResource);
         });
     }
 
     @Test
     public void changeText_sameActivity() {
         // Type text and then press the button.
-        onView(withId(R.id.editTextUserInput))
-                .perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());
-        onView(withId(R.id.changeTextBt)).perform(click());
+        onView( withId( R.id.editTextUserInput)) .perform( typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());
+        onView( withId( R.id.changeTextBt))      .perform( click());
 
         // Check that the text was changed.
-        onView(withId(R.id.textToBeChanged)).check(matches(withText(STRING_TO_BE_TYPED)));
+        onView( withId( R.id.textToBeChanged))   .check( matches( withText(STRING_TO_BE_TYPED)));
     }
 
     @After

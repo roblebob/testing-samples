@@ -56,20 +56,20 @@ public class MainActivity extends Activity implements View.OnClickListener,
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick( View view) {
         // Get the text from the EditText view.
-        final String text = mEditText.getText().toString();
+        final String text = mEditText .getText() .toString();
 
         if (view.getId() == R.id.changeTextBt) {
             // Set a temporary text.
-            mTextView.setText(R.string.waiting_msg);
+            mTextView .setText(R.string.waiting_msg);
             // Submit the message to the delayer.
             MessageDelayer .processMessage( text, this, mIdlingResource);
         }
     }
 
     @Override
-    public void onDone(String text) {
+    public void onDone( String text) {
         // The delayer notifies the activity via a callback.
         mTextView .setText( text);
     }
